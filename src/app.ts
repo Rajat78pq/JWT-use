@@ -1,5 +1,5 @@
 import express from 'express';
-import {home, notes, postData, signup} from './routes/router'
+import {home, notes, signup} from './routes/router'
 
 const app = express();
 
@@ -9,10 +9,9 @@ app.use(express.json());
 
 app.use("/home",home);
 
-app.use('/',postData);
 app.use('/',signup);
 
-app.use('/', notes);
+app.use('/note', notes);
 
  
 

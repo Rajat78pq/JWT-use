@@ -8,12 +8,13 @@ const autho = (req:Request, res:Response, next:NextFunction)=>{
 
         if(token){
             console.log(token);
+            next();
 
         }else{
             res.status(401).json({message: "unauthorized error"});
         }
         
-        next();
+        
         
     } catch (error) {
      console.log(`Autho error : ${error}`);

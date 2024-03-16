@@ -13,22 +13,6 @@ export const home = route.get('/hello', (req, res) => {
 
 
 
-export const postData = route.post('/postData', async (req, res) => {
-    try {
-        const { Name, Password } = req.body;
-        const Data = await client.query(`INSERT INTO public.demo(
-            "Name", "Password")
-            VALUES ( $1, $2)`, [Name, Password]);
-
-        res.send("Data push");
-    } catch (error) {
-        console.log(`my error ${error}`);
-    }
-});
-
-
-
-
 
 export const signup = route.post('/signup', async (req, res) => {
 
@@ -48,7 +32,7 @@ export const signup = route.post('/signup', async (req, res) => {
     VALUES ( $1, $2)`, [Name, hashPassword]);
 
         const token = jwt.sign({ Name: Name }, SECRET_KEY)
-
+        res.send("Data insort");
         res.send(token);
 
     } catch (error) {
@@ -87,6 +71,6 @@ export const signin = route.post('/signin', async (req, res) => {
 
 
 
-export const notes = route.get('/note',autho,(req, res)=>{
+export const notes = route.get('/book',autho,(req, res)=>{
     res.send(`Your notes is not available`);
 })
